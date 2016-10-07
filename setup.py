@@ -2,7 +2,7 @@
 # @Author: ZwEin
 # @Date:   2016-09-30 14:01:47
 # @Last Modified by:   ZwEin
-# @Last Modified time: 2016-10-06 20:14:28
+# @Last Modified time: 2016-10-06 22:43:58
 
 
 from distutils.core import setup
@@ -19,5 +19,5 @@ setup(
     download_url = 'https://github.com/usc-isi-i2/dig-age-extractor',
     packages = find_packages(),
     keywords = ['age', 'extractor'],
-    install_requires=['digAgeDateExtractor']
+    install_requires=['digExtractor', 'digCrfTokenizer', 'digDictionaryExtractor']
     )
