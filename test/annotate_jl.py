@@ -2,11 +2,11 @@
 # @Author: ZwEin
 # @Date:   2016-10-06 20:17:15
 # @Last Modified by:   ZwEin
-# @Last Modified time: 2016-10-06 20:48:08
+# @Last Modified time: 2016-10-06 21:02:50
 
 import os
 import sys
-import yaml
+import json
 import codecs
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
@@ -19,7 +19,8 @@ def annotate(intput_path, output_path=None):
     i = 0
     for line in codecs.open(intput_path, 'r'):
         try:
-            json_obj = yaml.safe_load(line)
+            json_obj = json.loads(line)
+            # json_obj = yaml.safe_load(line)
         except Exception as e:
             continue
         i += 1
