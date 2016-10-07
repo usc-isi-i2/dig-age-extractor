@@ -2,7 +2,7 @@
 # @Author: ZwEin
 # @Date:   2016-10-05 16:01:52
 # @Last Modified by:   ZwEin
-# @Last Modified time: 2016-10-06 20:11:28
+# @Last Modified time: 2016-10-06 21:50:58
 
 import json
 import string
@@ -37,14 +37,12 @@ def extract(doc, input_fields='text', output_field='names'):
     if isinstance(input_fields, basestring):
         doc[input_fields] = tokenize(doc[input_fields]) if isinstance(doc[input_fields], basestring) else doc[input_fields]
     elif isinstance(input_fields, list):
-        print 'sss'
         for input_field in input_fields:
             doc[input_field] = tokenize(doc[input_field]) if isinstance(doc[input_field], basestring) else doc[input_field]
     else:
         return None
 
     updated_doc = ep.extract(doc)
-    # print updated_doc
     if output_field not in updated_doc:
         return None
     return updated_doc[output_field][0]['value']
