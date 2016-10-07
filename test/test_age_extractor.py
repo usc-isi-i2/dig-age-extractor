@@ -8,9 +8,9 @@ import unittest
 
 from digExtractor.extractor import Extractor
 from digExtractor.extractor_processor import ExtractorProcessor
-from digAgeExtractor.dig_age_extractor import AgeExtractor
+from digAgeExtractor.age_extractor import AgeExtractor
 
-class TestDrugUseExtractorMethods(unittest.TestCase):
+class TestAgeExtractorMethods(unittest.TestCase):
 
     def setUp(self):
         pass
