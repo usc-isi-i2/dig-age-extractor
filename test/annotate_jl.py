@@ -2,7 +2,7 @@
 # @Author: ZwEin
 # @Date:   2016-10-06 20:17:15
 # @Last Modified by:   ZwEin
-# @Last Modified time: 2016-10-08 15:41:26
+# @Last Modified time: 2016-10-10 15:45:21
 
 import os
 import sys
@@ -14,9 +14,6 @@ TEST_DATA_DIR = os.path.join(os.path.dirname(__file__), 'data')
 
 from digAgeExtractor.age_helper import *
 
-
-
-
 def annotate(intput_path, output_path=None):
     dataset = []
     i = 0
@@ -24,6 +21,7 @@ def annotate(intput_path, output_path=None):
     correct_size = 0.
     assumed_annotated_size = 0.
     assumed_correct_size = 0.
+
     for line in codecs.open(intput_path, 'r'):
         try:
             json_obj = json.loads(line)
@@ -36,6 +34,7 @@ def annotate(intput_path, output_path=None):
         correct = json_obj['correct'] if 'correct' in json_obj else None
         # annotated = json_obj['annotated'] if 'annotated' in json_obj else None
         annotated = extract(content)
+
         # annotated = list(set(annotated)) if annotated else []
         annotated = list(set(correct).union(set(annotated))) if annotated else []
         
@@ -44,6 +43,7 @@ def annotate(intput_path, output_path=None):
 
         # annotated_size += len(annotated)
         # assumed_annotated_size += len(list(set(correct).union(set(annotated))))
+
 
         node_text = content if content else ' '
 
@@ -63,9 +63,6 @@ def annotate(intput_path, output_path=None):
         # .append((node_text, sorted(list(set(correct))), sorted(list(set(correct)))))
 
     # dataset = [{'content': content, 'correct': correct, 'annotated': annotated} for (content, correct, _) in dataset]
-
-    # print correct_size, 'out of', annotated_size, 'annotated ages are correct:', correct_size/annotated_size
-    # print assumed_correct_size, 'out of', assumed_annotated_size, 'annotated ages are correct:', assumed_correct_size/assumed_annotated_size
 
     if not output_path:
         output_path = intput_path
